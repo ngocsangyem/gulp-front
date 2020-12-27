@@ -1,0 +1,12 @@
+extends ../../layouts/layout
+
+block var
+	- title = 'Home'
+	- bodyClass = 'home'
+
+
+block main
+	img(src="@header/images/header.jpeg", alt="component image")
+	img(src="@images/global_image_1.jpeg", alt="global image")
+	include ../../../components/header/header
+	include ../../../components/footer/footer
