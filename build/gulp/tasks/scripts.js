@@ -7,7 +7,7 @@ const { paths, isDev, dirs, colors, plugins } = require('../../utils');
 const { WebpackDevConfig } = require('../../webpack/webpack.dev');
 const { WebpackProdConfig } = require('../../webpack/webpack.prod');
 
-const inputs = () => paths.pages('**', '*.+(j|t)s');
+const inputs = () => paths.pages('**', '*.ts');
 
 const compileWebpack = () =>
 	webpackStream(

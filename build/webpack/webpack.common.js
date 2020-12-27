@@ -7,7 +7,7 @@ const WebpackCommonConfig = {
 	module: {
 		rules: [
 			{
-				test: /\.(js|ts)$/,
+				test: /\.(ts)$/,
 				exclude: /(node_modules|bower_components)/,
 				loader: 'awesome-typescript-loader',
 			},
