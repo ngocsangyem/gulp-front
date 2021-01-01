@@ -14,7 +14,7 @@ const watchChanges = (done) => {
 		);
 
 		// Scripts
-		watch(paths.app('**', '*.+(j|t)s'), series('compile:scripts'));
+		watch(paths.app('**', '*.ts'), series('compile:scripts'));
 
 		// Images
 		watch(

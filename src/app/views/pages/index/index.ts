@@ -6,7 +6,7 @@ export class IndexComponent {
 	}
 
 	swingModalDemo() {
-		let buttons = document.querySelectorAll('.modal-swing-button');
+		let buttons = document.querySelectorAll('.btn__swing');
 		buttons.forEach((cur) => new SwingModalComponent(cur));
 	}
 
