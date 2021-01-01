@@ -10,7 +10,7 @@ const watchChanges = (done) => {
 		// Templates
 		watch(
 			[paths.app('**', '*.pug'), paths.app('**', '*.json')],
-			series('compile:templates')
+			series('compile:templates', 'inject')
 		);
 
 		// Scripts
