@@ -39,9 +39,25 @@
 	}
 }
 
+.btn-outline--primary {
+	border: 1px solid var(--color-primary);
+
+	&:hover {
+		background-color: var(--color-primary);
+	}
+}
+
 .btn--subtle {
 	background-color: var(--color-contrast-lower);
 	color: var(--color-contrast-higher);
+}
+
+.btn-outline--subtle {
+	border: 1px solid var(--color-contrast-lower);
+
+	&:hover {
+		background-color: var(--color-contrast-lower);
+	}
 }
 
 .btn--accent {
@@ -54,6 +70,14 @@
 
 	&:focus {
 		box-shadow: 0px 0px 0px 2px alpha(var(--color-accent), 0.2);
+	}
+}
+
+.btn-outline--accent {
+	border: 1px solid var(--color-accent);
+
+	&:hover {
+		background-color: var(--color-accent);
 	}
 }
 
