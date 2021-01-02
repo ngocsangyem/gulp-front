@@ -1,0 +1,73 @@
+@import "../../../styles/styles.scss";
+
+.rounded-email-container {
+	display: flex;
+
+	>.email-button {
+
+		display: flex;
+		align-items: center;
+		justify-content: center;
+
+		margin-left: -4em;
+
+		width: 4em;
+		height: 4em;
+
+		background-color: lightness(var(--color-primary), 1.3);
+		border: none;
+		border-radius: 40px;
+		transition: all .2s ease;
+		cursor: pointer;
+
+		>svg {
+			width: 1.1em;
+			height: 1.1em;
+
+			fill: #fff;
+			filter: drop-shadow(0 0 5px rgba(0, 0, 0, .1));
+			transition: all .5s cubic-bezier(0.34, 1.3, 0.64, 1);
+		}
+
+		&:hover {
+			background-color: #fff;
+
+			svg {
+				fill: var(--color-primary);
+				transform: rotate(360deg) scale(1.3);
+			}
+		}
+	}
+
+	>.email-input {
+		padding: .6em 1em;
+		padding-right: calc(4em + .6em);
+
+		box-shadow: 0 .2em .3em rgba(0, 0, 0, .1);
+		color: #fff;
+		background-color: var(--color-primary);
+		border: none;
+		border-radius: 1em 40px 40px 1em;
+		transition: all .2s ease;
+
+		width: 250px;
+
+		flex: 1;
+
+		font-size: 18px;
+
+		&:focus {
+			outline: none;
+			box-shadow: 0 .4em .6em rgba(0, 0, 0, .2);
+		}
+
+		&:focus,
+		&:focus~.email-button {
+			transform: translateY(-5px);
+		}
+
+		&::placeholder {
+			color: rgba(255, 255, 255, .8);
+		}
+	}
+}

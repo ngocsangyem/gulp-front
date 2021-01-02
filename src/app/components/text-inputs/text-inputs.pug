@@ -1,0 +1,10 @@
+mixin text-inputs(data)
+	- data = data || {}
+	- data.class = data.class || ''
+	- data.content = data.content || 'Some content here'
+
+	.text-inputs(class=data.class)&attributes(attributes)
+		if block
+			block
+		else
+			!= data.content
