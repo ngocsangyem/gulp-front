@@ -1,0 +1,121 @@
+@import "../../../styles/styles.scss";
+
+.flip-modal {
+	.modal--active {
+		transform: translateZ(0px) translateX(0%) rotateY(0deg);
+		opacity: 1;
+	}
+
+	button:focus,
+	button {
+		outline: none;
+		border: none;
+	}
+
+	.modal-content-button:hover {
+		background-color: rgba(0, 0, 0, .1);
+	}
+
+	.modal-content-button {
+		padding: 0.5rem 1rem;
+		margin-top: auto;
+
+
+		color: var(--color-black);
+		background-color: rgba(0, 0, 0, .2);
+		border: 0;
+		border-radius: 0.25rem;
+		transition: background-color .2s ease;
+		cursor: pointer;
+
+		font-weight: 700;
+		text-transform: uppercase;
+		letter-spacing: 1px;
+		font-size: 0.875rem;
+
+		&::hover {
+			background-color: rgba(0, 0, 0, .1);
+		}
+	}
+
+	.modal {
+		overflow: hidden;
+
+		display: flex;
+		flex-direction: column;
+
+		min-height: 18.75rem;
+		max-width: calc(100% - 30px);
+
+		color: #fff;
+		background-color: var(--color-white);
+		transform-origin: 50% 100%;
+		border-radius: 4px;
+		transition: all .6s cubic-bezier(0.34, 1.6, 0.64, 1);
+
+		width: 400px;
+
+		position: relative;
+		z-index: 999;
+
+		p {
+			margin: 0;
+		}
+
+		&:not(.modal--active) {
+			opacity: 0;
+			transform: translateZ(100px) translateX(-100px) rotateY(90deg);
+		}
+	}
+
+	.modal-background:not(.modal-background--active) {
+		opacity: 0;
+		visibility: hidden;
+	}
+
+	.modal-background--active {
+		opacity: 1;
+		visibility: visible;
+		background-color: rgba(0, 0, 0, .7);
+		backdrop-filter: blur(3px);
+	}
+
+	.modal-content {
+		padding: 10px;
+
+		flex: 1;
+		display: flex;
+		flex-direction: column;
+
+		color: var(--color-black);
+	}
+
+	.modal-background {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+
+		width: 100vw;
+		height: 100vh;
+
+		position: fixed;
+		left: 0;
+		top: 0;
+		z-index: 999;
+
+		transition: all .4s ease;
+
+		perspective: 1300px;
+	}
+
+	.modal-header {
+		margin: 0;
+		padding: 0.625rem;
+
+		background-color: rgba(0, 0, 0, .3);
+
+		background-color: var(--color-primary);
+		color: var(--color-white);
+	}
+}

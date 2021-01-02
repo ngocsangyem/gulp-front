@@ -1,0 +1,13 @@
+@import '../../../styles/abstracts/mixins';
+@import '../../../styles/global';
+@import '../../../styles/custom';
+
+@import '../../../components/modals/flip-modal/flip-modal';
+
+body {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+
+	height: 100vh;
+}

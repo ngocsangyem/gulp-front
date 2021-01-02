@@ -11,7 +11,7 @@ const testTemplate = `import { [capitalize-name]Component } from '../[name].comp
 
 const jsTemplateClass = `export class [capitalize-name]Component {\n\tconstructor() {\n\t\tconsole.log('[name] component');\n\t}\n\tstatic init() {\n\n\t}\n}`;
 
-const jsPageTemplateClass = `export class [capitalize-name]PageComponent {\n\tconstructor() {\n\t\tconsole.log('[name] page component');\n\t}\n\tstatic init() {\n\t\tconst [name] = new [capitalize-name]PageComponent();\n\t\treturn [name];\n\t}\n}\n(function() {\n\t[capitalize-name]PageComponent.init()\n})();`;
+const jsPageTemplateClass = `export class [capitalize-name]PageComponent {\n\tconstructor() {\n\t\tconsole.log('[name] page component');\n\t}\n\tstatic init() {\n\t\tconst [capitalize-name] = new [capitalize-name]PageComponent();\n\t\treturn [capitalize-name];\n\t}\n}\n(function() {\n\t[capitalize-name]PageComponent.init()\n})();`;
 const pageTemplate = `\n\nblock var\n\t- title = '[upper-first-name]'\n\t- bodyClass = '[name]'\n\nblock main`;
 const sassPageTemplate = '\n.[name]';
 const scssPageTemplate = '\n.[name] {}';

@@ -1,0 +1,34 @@
+@import '../../../styles/abstracts/mixins';
+@import '../../../styles/global';
+@import '../../../styles/custom';
+
+@import '../../../components/counting-number/counting-number';
+
+body {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+
+	height: 100vh;
+}
+
+.container {
+	display: flex;
+	color: #071036;
+	flex-direction: column;
+	padding: 20px;
+	align-items: center;
+}
+
+.container .paragraph {
+	font-size: 18px;
+	text-align: center;
+	margin-bottom: 10px;
+}
+
+.container .animate-number {
+	color: var(--color-primary);
+	font-size: 24px;
+	font-weight: bold;
+	margin-bottom: 10px;
+}
