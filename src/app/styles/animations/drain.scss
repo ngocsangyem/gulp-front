@@ -1,0 +1,17 @@
+.drain-animate {
+	animation: drain 1.5s ease-in infinite;
+}
+
+@keyframes drain {
+	0% {
+		-webkit-transform: rotate(0) scale(1);
+		transform: rotate(0) scale(1);
+		opacity: 1;
+	}
+
+	100% {
+		-webkit-transform: rotate(-1000deg) scale(0);
+		transform: rotate(-1000deg) scale(0);
+		opacity: 0;
+	}
+}

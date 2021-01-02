@@ -1,0 +1,15 @@
+.roll-in-animate {
+	animation: roll-in 1.5s cubic-bezier(0.25, 1, 0.5, 1) infinite;
+}
+
+@keyframes roll-in {
+	0% {
+		transform: translateX(-800px) rotate(-540deg);
+		opacity: 0;
+	}
+
+	100% {
+		transform: translateX(0) rotate(0deg);
+		opacity: 1;
+	}
+}

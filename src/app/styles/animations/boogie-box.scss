@@ -1,0 +1,52 @@
+.boogie-box-animate {
+	animation: boogie-box 2s ease infinite;
+}
+
+@keyframes boogie-box {
+	0% {
+		background: #e0a417;
+		box-shadow: -3rem 3rem 0 0 #071036;
+		transform: translate(1rem, -1rem);
+	}
+
+	12.5% {
+		box-shadow: 3rem -3rem 0 0 #071036;
+		transform: translate(-1rem, 1rem);
+	}
+
+	25% {
+		box-shadow: -3rem 3rem 0 0 #071036;
+		transform: translate(1rem, -1rem);
+	}
+
+	37.5% {
+		box-shadow: -3rem -3rem 0 0 #071036;
+		transform: translate(1rem, 1rem);
+	}
+
+	50% {
+		box-shadow: 3rem 3rem 0 0 #071036;
+		transform: translate(-1rem, -1rem);
+	}
+
+	62.5% {
+		box-shadow: -3rem -3rem 0 0 #071036;
+		transform: translate(1rem, 1rem);
+	}
+
+	75% {
+		box-shadow: 3rem 3rem 0 0 #071036;
+		transform: translate(-1rem, -1rem);
+	}
+
+	87.5% {
+		box-shadow: 3rem -3rem 0 0 #071036;
+		transform: translate(-1rem, 1rem);
+	}
+
+	100% {
+		background: #e0a417;
+		box-shadow: -3rem 3rem 0 0 #071036;
+		transform: translate(1rem, -1rem);
+	}
+}

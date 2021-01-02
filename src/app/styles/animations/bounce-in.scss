@@ -1,0 +1,47 @@
+.bounce-in-animate {
+	animation: bounce-in 2s linear 1;
+}
+
+@keyframes bounce-in {
+	0% {
+		transform: translateY(-300px) scale(0.3);
+		animation-timing-function: ease-in;
+		opacity: 0;
+	}
+
+	32% {
+		transform: translateY(0) scale(1);
+		animation-timing-function: ease-out;
+		opacity: 1;
+	}
+
+	46% {
+		transform: translateY(calc(-300px / 6));
+		animation-timing-function: ease-in;
+	}
+
+	61% {
+		transform: translateY(0);
+		animation-timing-function: ease-out;
+	}
+
+	72% {
+		transform: translateY(calc(-300px / 12));
+		animation-timing-function: ease-in;
+	}
+
+	81% {
+		transform: translateY(0);
+		animation-timing-function: ease-out;
+	}
+
+	87% {
+		transform: translateY(calc(-300px / 40));
+		animation-timing-function: ease-in;
+	}
+
+	93% {
+		transform: translateY(0);
+		animation-timing-function: ease-out;
+	}
+}

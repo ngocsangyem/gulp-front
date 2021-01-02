@@ -1,0 +1,32 @@
+.wobble-animate {
+	animation: wobble 1s ease infinite;
+}
+
+@keyframes wobble {
+
+	0%,
+	100% {
+		transform: translateX(0%);
+		transform-origin: 50% 50%;
+	}
+
+	15% {
+		transform: translateX(-32px) rotate(-10deg);
+	}
+
+	30% {
+		transform: translateX(calc(32px / 2)) rotate(10deg);
+	}
+
+	45% {
+		transform: translateX(calc(-32px / 2)) rotate(calc(-10deg / 1.8));
+	}
+
+	60% {
+		transform: translateX(calc(32px / 3.3)) rotate(calc(10deg / 3));
+	}
+
+	75% {
+		transform: translateX(calc(-32px / 5.5)) rotate(calc(-10deg / 5));
+	}
+}
