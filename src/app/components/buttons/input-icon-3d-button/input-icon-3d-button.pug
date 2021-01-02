@@ -1,0 +1,10 @@
+mixin buttonsinput-icon-3d-button(data)
+	- data = data || {}
+	- data.class = data.class || ''
+	- data.content = data.content || 'Some content here'
+
+	.buttonsinput-icon-3d-button(class=data.class)&attributes(attributes)
+		if block
+			block
+		else
+			!= data.content

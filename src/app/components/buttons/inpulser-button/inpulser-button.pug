@@ -1,0 +1,10 @@
+mixin buttonsinpulser-button(data)
+	- data = data || {}
+	- data.class = data.class || ''
+	- data.content = data.content || 'Some content here'
+
+	.buttonsinpulser-button(class=data.class)&attributes(attributes)
+		if block
+			block
+		else
+			!= data.content

@@ -1,0 +1,10 @@
+mixin buttonsblobby-button(data)
+	- data = data || {}
+	- data.class = data.class || ''
+	- data.content = data.content || 'Some content here'
+
+	.buttonsblobby-button(class=data.class)&attributes(attributes)
+		if block
+			block
+		else
+			!= data.content

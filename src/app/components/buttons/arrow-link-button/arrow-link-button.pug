@@ -1,0 +1,10 @@
+mixin buttonsarrow-link-button(data)
+	- data = data || {}
+	- data.class = data.class || ''
+	- data.content = data.content || 'Some content here'
+
+	.buttonsarrow-link-button(class=data.class)&attributes(attributes)
+		if block
+			block
+		else
+			!= data.content
