@@ -1,0 +1,13 @@
+@import "../../../styles/abstracts/mixins";
+@import "../../../styles/global.scss";
+@import "../../../styles/custom";
+
+@import '../../../components/text-inputs/animated-placeholder-label/animated-placeholder-label';
+
+body {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+
+	height: 100vh;
+}
