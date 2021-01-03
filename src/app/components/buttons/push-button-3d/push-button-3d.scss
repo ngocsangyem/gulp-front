@@ -1,0 +1,23 @@
+@import "../../../styles/styles.scss";
+
+.push-button-3d {
+	box-shadow: 0 4px #c1a23c;
+	color: #5e4800;
+	background-color: #ffd95e;
+	border-radius: 5px;
+	border: none;
+
+	font-weight: 900;
+	text-transform: uppercase;
+	letter-spacing: 1px;
+
+	padding: 10px 20px;
+
+	transition: all .2s ease;
+	cursor: pointer;
+}
+
+.push-button-3d:active {
+	box-shadow: 0 1px #c1a23c;
+	transform: translateY(3px);
+}

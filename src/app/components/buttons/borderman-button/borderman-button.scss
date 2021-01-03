@@ -1,3 +1,78 @@
 @import "../../../styles/styles.scss";
 
-.buttonsborderman-button {}
+.borderman-button {
+	display: inline-block;
+
+	position: relative;
+
+	opacity: .999;
+
+	margin: .3em;
+	padding: .5em 1.5em;
+
+	border-radius: 3px;
+
+	transition: all 0.3s;
+	cursor: pointer;
+
+	font-size: 1rem;
+}
+
+.borderman-button.btn-border:before,
+.borderman-button.btn-border:after {
+	content: '';
+
+	border-style: solid;
+	border-radius: 3px;
+	transition: all 0.3s;
+
+	position: absolute;
+	z-index: 5;
+
+	box-sizing: content-box;
+}
+
+.borderman-button.btn-border:hover:after {
+	height: calc(100% + (2px * 2));
+
+	border-color: #9b59b6;
+}
+
+.borderman-button.btn-border:before {
+	width: 0;
+	height: 100%;
+
+	border-width: 2px 0 2px 0;
+
+	top: -2px;
+	left: -2px;
+
+	transition-delay: 0.05s;
+}
+
+.borderman-button.btn-border:hover:before {
+	width: calc(100% + (2px * 2));
+	border-color: #9b59b6;
+}
+
+.borderman-button.btn-border:hover {
+	color: #9b59b6;
+}
+
+.borderman-button.btn-border:after {
+	width: 100%;
+	height: 0;
+
+	border-width: 0 2px 0 2px;
+
+	top: -2px;
+	left: -2px;
+}
+
+.borderman-button.btn-border {
+	background-color: transparent;
+	border: 2px solid rgba(0, 0, 0, .2);
+	color: #999;
+
+	font-weight: 400;
+}

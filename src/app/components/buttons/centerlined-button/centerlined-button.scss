@@ -1,3 +1,44 @@
 @import "../../../styles/styles.scss";
 
-.buttonscenterlined-button {}
+.centerlined-button {
+	color: #f00;
+	background-color: transparent;
+	transition: .3s ease;
+
+	padding-bottom: calc(1px * 2);
+
+	position: relative;
+
+	display: inline-block;
+
+	font-size: 1rem;
+	font-weight: 400;
+	text-decoration: none;
+
+	cursor: pointer;
+
+	&:after {
+		display: block;
+
+		background-color: #f00;
+		transform: scaleX(0);
+		transform-origin: bottom center;
+		transition: .3s ease;
+
+		width: 100%;
+		height: 1px;
+
+		position: absolute;
+		bottom: 0;
+		left: 0;
+		content: "";
+	}
+
+	&:hover {
+		letter-spacing: 1px;
+
+		&:after {
+			transform: scaleX(1);
+		}
+	}
+}

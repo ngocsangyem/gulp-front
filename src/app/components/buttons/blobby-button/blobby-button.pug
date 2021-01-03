@@ -1,10 +1,19 @@
-mixin buttonsblobby-button(data)
+mixin blobby-button(data)
 	- data = data || {}
 	- data.class = data.class || ''
-	- data.content = data.content || 'Some content here'
+	- data.content = data.content || 'Gulp Front'
 
-	.buttonsblobby-button(class=data.class)&attributes(attributes)
-		if block
-			block
-		else
-			!= data.content
+	button.blobby-button(class=data.class, role="button", type="button")&attributes(attributes)
+		!= data.content
+		span.inner
+			span.blobs
+				span.blob
+				span.blob
+				span.blob
+				span.blob
+		svg(xmlns='http://www.w3.org/2000/svg' version='1.1')
+			defs
+				filter#goo
+					fegaussianblur(in='SourceGraphic' result='blur' stdDeviation='10')
+					fecolormatrix(in='blur' mode='matrix' values='1 0 0 0 0 0 1 0 0 0 0 0 1 0 0 0 0 0 21 -7' result='goo')
+					feblend(in2='goo' in='SourceGraphic' result='mix')

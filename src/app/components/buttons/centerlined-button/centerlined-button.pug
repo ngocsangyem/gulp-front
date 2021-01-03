@@ -1,9 +1,10 @@
-mixin buttonscenterlined-button(data)
+mixin centerlined-button(data)
 	- data = data || {}
 	- data.class = data.class || ''
-	- data.content = data.content || 'Some content here'
+	- data.href = data.href || 'javascript:void(0)'
+	- data.content = data.content || 'Gulp Front'
 
-	.buttonscenterlined-button(class=data.class)&attributes(attributes)
+	a.centerlined-button(class=data.class, title=data.content, href=data.href)&attributes(attributes)
 		if block
 			block
 		else

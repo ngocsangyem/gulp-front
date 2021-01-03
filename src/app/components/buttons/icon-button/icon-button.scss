@@ -1,3 +1,54 @@
 @import "../../../styles/styles.scss";
 
-.buttonsicon-button {}
+.icon-button {
+	display: flex;
+	align-items: stretch;
+
+	color: var(--color-white);
+	background-color: transparent;
+	border: none;
+
+	width: 12em;
+
+	cursor: pointer;
+
+	font-size: 1rem;
+
+	>.text {
+		font-weight: 700;
+		line-height: 1;
+		white-space: nowrap;
+		text-align: left;
+		text-transform: uppercase;
+		letter-spacing: 1px;
+
+		min-width: min-content;
+
+		flex: 1;
+
+		background-image: linear-gradient(180deg, #c34022, #ea5836);
+		border-top-left-radius: 5px;
+		border-bottom-left-radius: 5px;
+	}
+
+	>.icon-btn {
+		background-color: var(--color-white);
+		border-bottom-right-radius: 5px;
+		border-top-right-radius: 5px;
+
+		justify-content: center;
+
+		svg {
+			fill: #c34022;
+		}
+	}
+
+
+	>.text,
+	>.icon-btn {
+		display: flex;
+		align-items: center;
+
+		padding: .75em;
+	}
+}

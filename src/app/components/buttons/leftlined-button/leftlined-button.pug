@@ -1,9 +1,10 @@
-mixin buttonsleftlined-button(data)
+mixin leftlined-button(data)
 	- data = data || {}
 	- data.class = data.class || ''
-	- data.content = data.content || 'Some content here'
+	- data.href = data.href || 'javascript:void(0)'
+	- data.content = data.content || 'Gulp Front'
 
-	.buttonsleftlined-button(class=data.class)&attributes(attributes)
+	a.leftlined-button(class=data.class, title=data.content, href=data.href)&attributes(attributes)
 		if block
 			block
 		else

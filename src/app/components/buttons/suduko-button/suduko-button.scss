@@ -1,3 +1,25 @@
 @import "../../../styles/styles.scss";
 
-.buttonssuduko-button {}
+.suduko-button {
+	font-family: serif;
+	font-size: 1rem;
+	text-transform: lowercase;
+	font-style: italic;
+
+	color: #fff;
+	background-color: #222;
+	border: .1em solid #222;
+	border-radius: 5px;
+	transition: all .5s ease;
+
+	padding: .5em 2em;
+
+	cursor: pointer;
+}
+
+.suduko-button:hover {
+	letter-spacing: 3px;
+
+	color: #222;
+	background: #fff;
+}

@@ -1,9 +1,9 @@
-mixin buttonsangled-gradient-button(data)
+mixin angled-gradient-button(data)
 	- data = data || {}
 	- data.class = data.class || ''
-	- data.content = data.content || 'Some content here'
+	- data.content = data.content || 'Gulp Front'
 
-	.buttonsangled-gradient-button(class=data.class)&attributes(attributes)
+	button.angled-gradient-button(class=data.class, role="button", type="button")&attributes(attributes)
 		if block
 			block
 		else

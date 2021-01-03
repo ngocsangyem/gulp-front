@@ -1,3 +1,67 @@
 @import "../../../styles/styles.scss";
 
-.buttonsarrow-button {}
+.arrow-button {
+	display: flex;
+	align-items: center;
+
+	color: #C2FFE9;
+	background-color: #00E692;
+	border: none;
+	border-radius: 20px;
+	transition: all .3s ease;
+
+	padding: 10px 16px;
+
+	font-size: 1rem;
+	font-weight: 700;
+
+	cursor: pointer;
+
+	>.arrow {
+		width: 6px;
+		height: 6px;
+
+		border-right: 2px solid #C2FFE9;
+		border-bottom: 2px solid #C2FFE9;
+		transform: rotate(-45deg);
+		transition: all .3s ease;
+
+		position: relative;
+
+		margin: 0 6px;
+
+		&:before {
+			display: block;
+
+			opacity: 0;
+			background-color: currentColor;
+			transform: rotate(45deg);
+			transform-origin: bottom right;
+			transition: all .3s ease;
+
+			width: 3px;
+			height: 2px;
+
+			position: absolute;
+			bottom: calc(-2px / 2);
+			right: 0;
+
+			content: "";
+		}
+	}
+
+	&:hover {
+		background-color: #017A4F;
+		color: #fff;
+
+		>.arrow {
+			transform: rotate(-45deg) translate(4px, 4px);
+			border-color: text-hover-color;
+
+			&:before {
+				opacity: 1;
+				width: 8px;
+			}
+		}
+	}
+}

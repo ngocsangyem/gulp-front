@@ -1,9 +1,9 @@
-mixin buttonsreflective-class-button(data)
+mixin reflective-class-button(data)
 	- data = data || {}
 	- data.class = data.class || ''
-	- data.content = data.content || 'Some content here'
+	- data.content = data.content || 'Gulp Front'
 
-	.buttonsreflective-class-button(class=data.class)&attributes(attributes)
+	button.reflective-class-button(class=data.class, role="button", type="button")&attributes(attributes)
 		if block
 			block
 		else
