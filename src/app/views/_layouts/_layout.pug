@@ -1,6 +1,6 @@
-include ./includes/variables
+include ./includes/_variables
 if process.argv.slice(3).indexOf('--production') > -1
-	include ./includes/watermark
+	include ./includes/_watermark
 
 block var
 doctype html
@@ -15,10 +15,10 @@ html(dir='ltr', lang=SEO.seo_lang, itemscope, itemtype="http://schema.org/WebSit
 		meta(name='msapplication-navbutton-color', content=SEO.mobile_color)
 		meta(name='apple-mobile-web-app-status-bar-style', content=SEO.mobile_color)
 		if process.argv.slice(3).indexOf('--production') > -1
-			include ./includes/seo
+			include ./includes/_seo
 		if process.argv.slice(3).indexOf('--production') > -1
-			include ./includes/favicon
-		include ./includes/css
+			include ./includes/_favicon
+		include ./includes/_css
 		<!-- GFRONT:styles -->
 		title #{title} | #{SEO.cfg_name}
 	body(class=process.argv.slice(3).indexOf('--production') < 0 ? workName + 'develop '+prefix+bodyClass+'-page' : prefix+bodyClass+'-page' || 'default')

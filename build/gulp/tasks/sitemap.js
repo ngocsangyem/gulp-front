@@ -3,7 +3,7 @@ const { readFileSync } = require('fs');
 
 const { paths, plugins } = require('../../utils');
 
-const SEO = JSON.parse(readFileSync(paths.views('layouts', 'seo.json')));
+const SEO = JSON.parse(readFileSync(paths.views('_layouts', 'seo.json')));
 
 const inputs = () => [
 	paths.taskTarget('**', '*.html'),
