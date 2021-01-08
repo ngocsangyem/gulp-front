@@ -82,11 +82,7 @@ try {
 	config.author = Object.assign(author, config.author);
 
 	const build = {
-		globalStyles: [
-			'app/styles/abstracts/mixins',
-			'app/styles/global.scss',
-			'app/styles/custom',
-		],
+		globalStyles: ['app/styles/global.scss', 'app/styles/custom'],
 		mixins: 'app/styles/styles.scss',
 		templatesExtend: 'app/views/layouts/layout.pug',
 		mainComponents: 'components',

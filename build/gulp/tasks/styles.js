@@ -32,10 +32,7 @@ const postCssPlugins = [
 	cssnano(),
 ];
 
-const inputs = () => [
-	paths.app('**', '*.s+(a|c)ss'),
-	`!${paths.app('styles', '**', '*.s+(a|c)ss')}`,
-];
+const inputs = () => [paths.app('**', '*.s+(a|c)ss')];
 
 const sourcemapsInit = () =>
 	isDev ? plugins.sourcemaps.init({ largeFile: true }) : pipe();
