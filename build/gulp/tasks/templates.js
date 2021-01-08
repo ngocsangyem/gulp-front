@@ -1,4 +1,5 @@
-const { task, src, dest } = require('gulp');
+const { task, src, dest, lastRun } = require('gulp');
+const { resolve } = require('path');
 
 const { parseData, readDeps } = require('../../core');
 const {
@@ -12,7 +13,7 @@ const {
 const { pipe } = require('../../core');
 const { store } = require('../../utils/store');
 
-const inputs = () => paths.pages('**', '*.pug');
+const inputs = () => paths.app('**', '*.pug');
 
 const pugOpts = {
 	pretty: isDev,
@@ -49,9 +50,32 @@ const rename = () =>
 		dirname: '',
 	});
 
+const filter = () => plugins.filter((file) => file.path.includes(paths._pages));
+
+const dependentsConfig = {
+	'.pug': {
+		parserSteps: [
+			/^\s*(?:extends|include)\s+(.+?)\s*$/gm,
+			function (str) {
+				const absolute = str.match(/^[\\/]+(.+)/);
+				if (absolute) {
+					str = resolve(absolute[1]);
+				}
+				return [str];
+			},
+		],
+		prefixes: ['_'],
+		postfixes: ['.pug'],
+	},
+};
+
+const dependents = () => plugins.dependents(dependentsConfig);
+
 const compileTemplates = () =>
-	src(inputs(), { cwd: paths._app })
+	src(inputs(), { cwd: paths._app, since: lastRun('compile:templates') })
 		.pipe(pluginErrorHandle())
+		.pipe(dependents())
+		.pipe(filter())
 		.pipe(parsePug())
 		.pipe(compilePug())
 		.pipe(parseHTML())
