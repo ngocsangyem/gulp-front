@@ -1,7 +1,7 @@
-@import '../../../styles/global';
-@import '../../../styles/custom';
+@import '@/styles/global';
+@import '@/styles/custom';
 
-@import '../../../components/modals/swing-modal/swing-modal';
+@import '@/components/modals/swing-modal/swing-modal';
 
 body {
 	display: flex;

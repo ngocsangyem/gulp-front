@@ -1,11 +1,11 @@
 const { task, src, dest, lastRun } = require('gulp');
-const { extname } = require('path');
 
 const Fiber = require('fibers');
 const cssDeclarationSorter = require('css-declaration-sorter');
 const autoprefixer = require('autoprefixer');
 const sortMedia = require('postcss-sort-media-queries');
 const cssnano = require('cssnano');
+const aliasImporter = require('node-sass-alias-importer');
 
 const {
 	paths,
@@ -19,7 +19,6 @@ const {
 	mainBundle,
 } = require('../../utils');
 const { pipe } = require('../../core');
-const { store } = require('../../utils/store');
 
 const postCssPlugins = [
 	sortMedia(),
@@ -37,12 +36,21 @@ const inputs = () => [paths.app('**', '*.s+(a|c)ss')];
 const sourcemapsInit = () =>
 	isDev ? plugins.sourcemaps.init({ largeFile: true }) : pipe();
 
-const compileSass = () =>
-	plugins.sass({
-		fiber: Fiber,
-		outputStyle: 'expanded',
-		precision: 10,
+const sassAlias = () =>
+	aliasImporter({
+		'@': './src/app',
+		'@styles': './src/app/styles',
+		'@components': './src/app/components',
 	});
+
+const sassOpts = {
+	fiber: Fiber,
+	outputStyle: 'expanded',
+	precision: 10,
+	importer: [sassAlias()],
+};
+
+const compileSass = () => plugins.sass(sassOpts);
 
 const sourcemapsWrite = () => (isDev ? plugins.sourcemaps.write() : pipe());
 

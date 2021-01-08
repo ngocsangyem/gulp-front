@@ -1,7 +1,7 @@
-@import '../../../styles/global';
-@import '../../../styles/custom';
+@import '@/styles/global';
+@import '@/styles/custom';
 
-@import '../../../components/counting-number/counting-number';
+@import '@/components/counting-number/counting-number';
 
 body {
 	display: flex;
