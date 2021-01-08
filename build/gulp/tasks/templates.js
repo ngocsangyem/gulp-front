@@ -12,6 +12,7 @@ const {
 } = require('../../utils');
 const { pipe } = require('../../core');
 const { store } = require('../../utils/store');
+const pugPluginAlias = require('pug-alias');
 
 const inputs = () => paths.app('**', '*.pug');
 
@@ -21,6 +22,14 @@ const pugOpts = {
 		isDev,
 		site: parseData(),
 	},
+	plugins: [
+		pugPluginAlias({
+			// as String
+			'~components': 'src/app/components',
+			// as Function
+			'@': (fn) => fn.replace(/^@/, 'src/app'),
+		}),
+	],
 };
 
 const compilePug = () => {
