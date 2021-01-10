@@ -1,4 +1,4 @@
-const { paths } = require('../utils');
+const { paths, config } = require('../utils');
 const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin');
 
 const WebpackCommonConfig = {
@@ -16,13 +16,7 @@ const WebpackCommonConfig = {
 
 	resolve: {
 		extensions: ['.ts', '.tsx', '.js', '.jsx'],
-		alias: {
-			'@': paths._app,
-			'@components': paths._components,
-			'@pages': paths._pages,
-			'@helpers': paths._helpers,
-			'@assets': paths._assets,
-		},
+		alias: config.alias,
 		plugins: [new TsconfigPathsPlugin()],
 	},
 };

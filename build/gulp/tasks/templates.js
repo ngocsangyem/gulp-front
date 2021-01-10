@@ -9,6 +9,7 @@ const {
 	isDev,
 	browserSync,
 	colors,
+	config,
 } = require('../../utils');
 const { pipe } = require('../../core');
 const { store } = require('../../utils/store');
@@ -22,14 +23,7 @@ const pugOpts = {
 		isDev,
 		site: parseData(),
 	},
-	plugins: [
-		pugPluginAlias({
-			// as String
-			'~components': 'src/app/components',
-			// as Function
-			'@': (fn) => fn.replace(/^@/, 'src/app'),
-		}),
-	],
+	plugins: [pugPluginAlias(config.alias)],
 };
 
 const compilePug = () => {
@@ -61,6 +55,16 @@ const rename = () =>
 
 const filter = () => plugins.filter((file) => file.path.includes(paths._pages));
 
+const pugAlias = (path) => {
+	for (let i = 0; i < Object.keys(config.alias).length; i++) {
+		let alias = Object.keys(config.alias)[i];
+		if (new RegExp(`^${alias}\/.*$`).test(path)) {
+			return path.replace(alias, config.alias[alias]);
+		}
+	}
+	return path;
+};
+
 const dependentsConfig = {
 	'.pug': {
 		parserSteps: [
@@ -68,9 +72,9 @@ const dependentsConfig = {
 			function (str) {
 				const absolute = str.match(/^[\\/]+(.+)/);
 				if (absolute) {
-					str = resolve(absolute[1]);
+					str = resolve(paths._app, absolute[1]);
 				}
-				return [str];
+				return [pugAlias(str)];
 			},
 		],
 		prefixes: ['_'],

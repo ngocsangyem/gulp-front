@@ -10,9 +10,9 @@ const PluginError = require('plugin-error');
  * @return {Object}
  */
 
-const pipe = function (handler, handlerName) {
+const pipe = function (handler, handlerName, options) {
 	const name = handlerName || (handler && handler.displayName) || 'core:pipe';
-
+	const opts = options || {};
 	if (typeof handler !== 'function') {
 		return through.obj();
 	}
@@ -24,7 +24,7 @@ const pipe = function (handler, handlerName) {
 
 		if (file.isBuffer()) {
 			try {
-				handler(file);
+				handler(file, opts);
 			} catch (e) {
 				return cb(new PluginError(name, e));
 			}

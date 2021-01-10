@@ -1,5 +1,5 @@
 const colors = require('ansi-colors');
-const { resolve } = require('path');
+const { resolve, join } = require('path');
 const pjson = require('../../package.json');
 
 const { isFile } = require('../helpers');
@@ -19,9 +19,10 @@ const {
 } = require('../core/templates/templates');
 
 let config = {};
+const root = resolve(__dirname, '..', '..');
 
 try {
-	const appConfig = resolve(__dirname, '..', 'config.js');
+	const appConfig = resolve(__dirname, '..', '..', 'config.js');
 	if (isFile(appConfig)) {
 		config = require(appConfig);
 	}
@@ -64,7 +65,7 @@ try {
 
 	const lintStyles = {
 		options: {
-			configFile: resolve(__dirname, '..', '.sass-lint.yml'),
+			configFile: resolve(__dirname, '..', '..', '.sass-lint.yml'),
 			formatter: 'checkstyle',
 		},
 	};
@@ -137,8 +138,36 @@ try {
 		windows: false,
 		yandex: false,
 	};
-
 	config.favicons = Object.assign(favicons, config.favicons);
+
+	const alias = {
+		'@': join(root, config.directories.source, config.directories.app),
+		'@components': join(
+			root,
+			config.directories.source,
+			config.directories.app,
+			config.directories.components
+		),
+		'@pages': join(
+			root,
+			config.directories.source,
+			config.directories.app,
+			config.directories.views,
+			config.directories.pages
+		),
+		'@helpers': join(
+			root,
+			config.directories.source,
+			config.directories.app,
+			config.directories.helpers
+		),
+		'@assets': join(
+			root,
+			config.directories.source,
+			config.directories.assets
+		),
+	};
+	config.alias = Object.assign(alias, config.alias);
 }
 
 module.exports = { config };
