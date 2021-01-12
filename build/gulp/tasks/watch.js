@@ -1,8 +1,9 @@
 const { watch, series, task, parallel } = require('gulp');
 const del = require('del');
-const { relative, resolve, sep, join } = require('path');
+const { relative, resolve, sep, join, basename } = require('path');
 
 const { isDev, paths, dirs, browserSync, taskTarget } = require('../../utils');
+const { isFile } = require('../../helpers');
 
 const cleaningImages = async (file) => {
 	const config = {
@@ -29,6 +30,20 @@ const cleaningImages = async (file) => {
 	await del(filePathBuild, config);
 };
 
+const cleaningHTML = async (file) => {
+	const config = {
+		force: true,
+		dot: true,
+	};
+	const filePathSrc = basename(file, '.pug');
+	const filePathBuild = resolve(taskTarget, `${filePathSrc}.html`);
+
+	if (!isFile(filePathBuild) && !file.includes(paths._pages)) {
+		return;
+	}
+	await del(filePathBuild, config);
+};
+
 const watchChanges = (done) => {
 	if (isDev) {
 		// Styles
@@ -38,7 +53,7 @@ const watchChanges = (done) => {
 		watch(
 			[paths.app('**', '*.pug'), paths.app('**', '*.json')],
 			series('compile:templates', 'inject')
-		);
+		).on('unlink', (file) => cleaningHTML(file));
 
 		// Scripts
 		watch(paths.app('**', '*.ts'), series('compile:scripts'));
