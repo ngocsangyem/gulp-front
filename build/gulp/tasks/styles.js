@@ -54,7 +54,7 @@ const compileSass = () => plugins.sass(sassOpts);
 
 const sourcemapsWrite = () => (isDev ? plugins.sourcemaps.write() : pipe());
 
-const postCss = () => (isDev ? plugins.postcss(postCssPlugins) : pipe());
+const postCss = () => (!isDev ? plugins.postcss(postCssPlugins) : pipe());
 
 const rename = () =>
 	plugins.rename({
