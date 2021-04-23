@@ -76,8 +76,6 @@ const concat = () =>
 
 const filter = () => plugins.filter((file) => file.path.includes(paths._pages));
 
-const dependents = () => plugins.dependents();
-
 const dependentsConfig = {
 	'.scss': {
 		// The sequence of RegExps and/or functions to use when parsing
@@ -124,6 +122,12 @@ const dependentsConfig = {
 	},
 };
 
+const dependents = () =>
+	plugins.dependents(dependentsConfig, {
+		logDependents: true,
+		logDependencyMap: false,
+	});
+
 const compileStyles = () => {
 	const checkFiles = require(paths.core('checkFiles'));
 	checkFiles('styles');
@@ -132,12 +136,7 @@ const compileStyles = () => {
 		since: lastRun('compile:styles'),
 	})
 		.pipe(pluginErrorHandle())
-		.pipe(
-			dependents(dependentsConfig, {
-				logDependents: true,
-				logDependencyMap: false,
-			})
-		)
+		.pipe(dependents())
 		.pipe(filter())
 		.pipe(sourcemapsInit())
 		.pipe(compileSass())
