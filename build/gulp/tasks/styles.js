@@ -1,4 +1,5 @@
 const { task, src, dest, lastRun } = require('gulp');
+const { resolve } = require('path');
 
 const Fiber = require('fibers');
 const cssDeclarationSorter = require('css-declaration-sorter');
@@ -6,6 +7,7 @@ const autoprefixer = require('autoprefixer');
 const sortMedia = require('postcss-sort-media-queries');
 const cssnano = require('cssnano');
 const aliasImporter = require('node-sass-alias-importer');
+const GDependent = require('@ngocsangyem/gulp-dependents');
 
 const {
 	paths,
@@ -76,6 +78,16 @@ const concat = () =>
 
 const filter = () => plugins.filter((file) => file.path.includes(paths._pages));
 
+const stylesAlias = (path) => {
+	for (let i = 0; i < Object.keys(config.alias).length; i++) {
+		let alias = Object.keys(config.alias)[i];
+		if (path.includes(alias)) {
+			return path.replace(alias, config.alias[alias]);
+		}
+	}
+	return path;
+};
+
 const dependentsConfig = {
 	'.scss': {
 		// The sequence of RegExps and/or functions to use when parsing
@@ -97,8 +109,12 @@ const dependentsConfig = {
 			/^\s*@import\s+(.+?);/gm,
 
 			// Split the captured text on "," to get each path.
-			function (text) {
-				return text.split(',');
+			function (str) {
+				// const absolute = str.match(/^[\\/]+(.+)/);
+				// if (absolute) {
+				// 	str = resolve(paths._app, absolute[1]);
+				// }
+				return [stylesAlias(str)];
 			},
 
 			// Match the balanced quotes and capture only the file path.
@@ -114,16 +130,13 @@ const dependentsConfig = {
 		// The file name postfixes to try when looking for dependency
 		// files, if the syntax does not require them to be specified in
 		// dependency statements. This could be e.g. file name extensions.
-		postfixes: ['.sass', '.scss'],
-
-		// The additional base paths to try when looking for dependency
-		// files referenced using relative paths.
+		postfixes: ['.scss'],
 		basePaths: [],
 	},
 };
 
 const dependents = () =>
-	plugins.dependents(dependentsConfig, {
+	GDependent(dependentsConfig, {
 		logDependents: true,
 		logDependencyMap: false,
 	});
