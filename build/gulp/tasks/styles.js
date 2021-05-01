@@ -7,7 +7,7 @@ const autoprefixer = require('autoprefixer');
 const sortMedia = require('postcss-sort-media-queries');
 const cssnano = require('cssnano');
 const aliasImporter = require('node-sass-alias-importer');
-const GDependent = require('@ngocsangyem/gulp-dependents');
+const dependents = require('@ngocsangyem/gulp-dependents');
 
 const {
 	paths,
@@ -33,16 +33,14 @@ const postCssPlugins = [
 	cssnano(),
 ];
 
-const inputs = () => [paths.app('**', '*.s+(a|c)ss')];
+const inputs = () => paths.app('**', '*.s+(a|c)ss');
 
 const sourcemapsInit = () =>
 	isDev ? plugins.sourcemaps.init({ largeFile: true }) : pipe();
 
 const sassAlias = () =>
 	aliasImporter({
-		'@': './src/app',
-		'@styles': './src/app/styles',
-		'@components': './src/app/components',
+		...config.alias,
 	});
 
 const sassOpts = {
@@ -107,36 +105,24 @@ const dependentsConfig = {
 			// Match the import statements and capture the text
 			// between "@import" and ";".
 			/^\s*@import\s+(.+?);/gm,
-
-			// Split the captured text on "," to get each path.
 			function (str) {
-				// const absolute = str.match(/^[\\/]+(.+)/);
-				// if (absolute) {
-				// 	str = resolve(paths._app, absolute[1]);
-				// }
+				const absolute = str.match(/^[\\/]+(.+)/);
+				if (absolute) {
+					str = resolve(paths._app, absolute[1]);
+				}
+				console.log(stylesAlias(str));
 				return [stylesAlias(str)];
 			},
-
-			// Match the balanced quotes and capture only the file path.
 			/"([^"]+)"|'([^']+)'/gm,
 		],
-
-		// The file name prefixes to try when looking for dependency
-		// files, if the syntax does not require them to be specified in
-		// dependency statements. This could be e.g. '_', which is often
-		// used as a naming convention for mixin files.
 		prefixes: ['_'],
-
-		// The file name postfixes to try when looking for dependency
-		// files, if the syntax does not require them to be specified in
-		// dependency statements. This could be e.g. file name extensions.
 		postfixes: ['.scss'],
 		basePaths: [],
 	},
 };
 
-const dependents = () =>
-	GDependent(dependentsConfig, {
+const dependentsPlugin = () =>
+	dependents(dependentsConfig, {
 		logDependents: true,
 		logDependencyMap: false,
 	});
@@ -149,7 +135,7 @@ const compileStyles = () => {
 		since: lastRun('compile:styles'),
 	})
 		.pipe(pluginErrorHandle())
-		.pipe(dependents())
+		.pipe(dependentsPlugin())
 		.pipe(filter())
 		.pipe(sourcemapsInit())
 		.pipe(compileSass())
