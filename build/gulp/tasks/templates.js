@@ -14,7 +14,7 @@ const {
 const { pipe } = require('../../core');
 const { store } = require('../../utils/store');
 const pugPluginAlias = require('pug-alias');
-const GDependent = require('@ngocsangyem/gulp-dependents');
+const dependents = require('../../plugins/dependents');
 
 const inputs = () => paths.app('**', '*.pug');
 
@@ -83,8 +83,8 @@ const dependentsConfig = {
 	},
 };
 
-const dependents = () =>
-	GDependent(dependentsConfig, {
+const dependentsPlugin = () =>
+	dependents(dependentsConfig, {
 		logDependents: true,
 		logDependencyMap: false,
 	});
@@ -92,7 +92,7 @@ const dependents = () =>
 const compileTemplates = () =>
 	src(inputs(), { cwd: paths._app, since: lastRun('compile:templates') })
 		.pipe(pluginErrorHandle())
-		.pipe(dependents())
+		.pipe(dependentsPlugin())
 		.pipe(filter())
 		.pipe(parsePug())
 		.pipe(compilePug())
