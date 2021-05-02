@@ -7,7 +7,7 @@ const autoprefixer = require('autoprefixer');
 const sortMedia = require('postcss-sort-media-queries');
 const cssnano = require('cssnano');
 const aliasImporter = require('node-sass-alias-importer');
-const dependents = require('@ngocsangyem/gulp-dependents');
+const dependents = require('../../plugins/dependents');
 
 const {
 	paths,
@@ -110,7 +110,6 @@ const dependentsConfig = {
 				if (absolute) {
 					str = resolve(paths._app, absolute[1]);
 				}
-				console.log(stylesAlias(str));
 				return [stylesAlias(str)];
 			},
 			/"([^"]+)"|'([^']+)'/gm,

@@ -36,7 +36,6 @@
 		"@babel/plugin-proposal-class-properties": "^7.13.0",
 		"@babel/preset-env": "^7.14.0",
 		"@babel/register": "^7.13.16",
-		"@ngocsangyem/gulp-dependents": "^1.2.9",
 		"ansi-colors": "^4.1.1",
 		"autoprefixer": "^10.2.5",
 		"awesome-typescript-loader": "^5.2.1",
