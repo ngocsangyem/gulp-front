@@ -26,7 +26,7 @@
 -   [Browser Support](#browser)
 -   [Prerequisites](#prerequisites)
 -   [Commands](#commands)
--   [Error install](#errorinstall)
+-   [Error install](#error-install)
 
 # Install
 
