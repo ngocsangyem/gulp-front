@@ -1,5 +1,4 @@
 const { task, src, dest, lastRun } = require('gulp');
-const { resolve } = require('path');
 
 const Fiber = require('fibers');
 const cssDeclarationSorter = require('css-declaration-sorter');
@@ -76,52 +75,8 @@ const concat = () =>
 
 const filter = () => plugins.filter((file) => file.path.includes(paths._pages));
 
-const stylesAlias = (path) => {
-	for (let i = 0; i < Object.keys(config.alias).length; i++) {
-		let alias = Object.keys(config.alias)[i];
-		if (path.includes(alias)) {
-			return path.replace(alias, config.alias[alias]);
-		}
-	}
-	return path;
-};
-
-const dependentsConfig = {
-	'.scss': {
-		// The sequence of RegExps and/or functions to use when parsing
-		// dependency paths from a source file. Each RegExp must have the
-		// 'gm' modifier and at least one capture group. Each function must
-		// accept a string and return an array of captured strings. The
-		// strings captured by each RegExp or function will be passed
-		// to the next, thus iteratively reducing the file content to an
-		// array of dependency file paths.
-		parserSteps: [
-			// Please note:
-			// The parser steps shown here are only meant to illustrate
-			// the concept of a matching pipeline. The actual config used
-			// for scss files is pure RegExp and reliably supports the
-			// full syntax for import statements.
-
-			// Match the import statements and capture the text
-			// between "@import" and ";".
-			/^\s*@import\s+(.+?);/gm,
-			function (str) {
-				const absolute = str.match(/^[\\/]+(.+)/);
-				if (absolute) {
-					str = resolve(paths._app, absolute[1]);
-				}
-				return [stylesAlias(str)];
-			},
-			/"([^"]+)"|'([^']+)'/gm,
-		],
-		prefixes: ['_'],
-		postfixes: ['.scss'],
-		basePaths: [],
-	},
-};
-
 const dependentsPlugin = () =>
-	dependents(dependentsConfig, {
+	dependents({}, {
 		logDependents: true,
 		logDependencyMap: false,
 	});

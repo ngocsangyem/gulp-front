@@ -1,5 +1,4 @@
 const { task, src, dest, lastRun } = require('gulp');
-const { resolve } = require('path');
 
 const { parseData, readDeps } = require('../../core');
 const {
@@ -56,35 +55,8 @@ const rename = () =>
 
 const filter = () => plugins.filter((file) => file.path.includes(paths._pages));
 
-const pugAlias = (path) => {
-	for (let i = 0; i < Object.keys(config.alias).length; i++) {
-		let alias = Object.keys(config.alias)[i];
-		if (new RegExp(`^${alias}\/.*$`).test(path)) {
-			return path.replace(alias, config.alias[alias]);
-		}
-	}
-	return path;
-};
-
-const dependentsConfig = {
-	'.pug': {
-		parserSteps: [
-			/^\s*(?:extends|include)\s+(.+?)\s*$/gm,
-			function (str) {
-				const absolute = str.match(/^[\\/]+(.+)/);
-				if (absolute) {
-					str = resolve(paths._app, absolute[1]);
-				}
-				return [pugAlias(str)];
-			},
-		],
-		prefixes: ['_'],
-		postfixes: ['.pug'],
-	},
-};
-
 const dependentsPlugin = () =>
-	dependents(dependentsConfig, {
+	dependents({}, {
 		logDependents: true,
 		logDependencyMap: false,
 	});
