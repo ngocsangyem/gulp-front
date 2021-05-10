@@ -4,8 +4,11 @@
 	"description": "Front-end components",
 	"main": "gulpfile.babel.js",
 	"scripts": {
+		"clean": "npx gulp clean",
+		"clean-deps": "npx rimraf node_modules",
 		"start": "gulp serve --open --development",
 		"build": "gulp build --open --production",
+		"format": "npx prettier --single-quote --write src/**/*.ts",
 		"add": "node .add"
 	},
 	"repository": {
@@ -48,6 +51,7 @@
 		"css-declaration-sorter": "^6.0.2",
 		"cssnano": "^5.0.2",
 		"del": "^6.0.0",
+		"eslint-config-prettier": "^8.3.0",
 		"esm": "^3.2.25",
 		"fibers": "^5.0.0",
 		"glob": "^7.1.7",
@@ -80,6 +84,7 @@
 		"plugin-error": "^1.0.1",
 		"postcss": "^8.2.14",
 		"postcss-sort-media-queries": "^3.9.10",
+		"prettier": "^2.3.0",
 		"pug-alias": "^2.0.1",
 		"pug-lexer": "^5.0.1",
 		"pug-parser": "^6.0.0",
