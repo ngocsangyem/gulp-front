@@ -1,5 +1,5 @@
-const { task, src, dest } = require('gulp');
-const { paths, plugins, isDev, browserSync, dirs } = require('../../utils');
+const { task, src } = require('gulp');
+const { plugins, browserSync, dirs } = require('../../utils');
 
 const inputs = () => [
 	'**/*.js',
