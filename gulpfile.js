@@ -1,7 +1,8 @@
 const { sync } = require('glob');
+const { join } = require('path');
 const { task, series, parallel } = require('gulp');
 
-const { paths } = require('./build/utils');
+const { paths, KarmaServer, args } = require('./build/utils');
 // Read tasks
 sync(paths.tasks('**', '*.js'))
 	.filter((file) => /\.(js)$/i.test(file))
@@ -34,4 +35,18 @@ task(
 		'sitemap',
 		'done',
 	])
+);
+
+task(
+	'test',
+	series('eslint', (done) => {
+		new KarmaServer(
+			{
+				configFile: join(__dirname, '/karma.conf.js'),
+				singleRun: !args.watch,
+				autoWatch: args.watch,
+			},
+			done
+		).start();
+	})
 );

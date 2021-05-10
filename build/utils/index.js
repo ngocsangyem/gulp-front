@@ -16,6 +16,9 @@ const plugins = gulpLoadPlugins({
 	},
 });
 
+// Create karma server
+const KarmaServer = require('karma').Server;
+
 // Create a new browserSync instance
 const browserSync = browserSyncLib.create();
 
@@ -86,4 +89,5 @@ module.exports = {
 	dirs,
 	colors,
 	mainBundle,
+	KarmaServer
 };
