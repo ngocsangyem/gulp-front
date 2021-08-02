@@ -9,7 +9,11 @@ const WebpackCommonConfig = {
 			{
 				test: /\.(ts)$/,
 				exclude: /(node_modules|bower_components)/,
-				loader: 'awesome-typescript-loader',
+				loader: 'esbuild-loader',
+				options: {
+					loader: 'ts',
+					target: 'es2015'
+				}
 			},
 		],
 	},
