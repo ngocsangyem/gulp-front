@@ -13,6 +13,7 @@ const { args, isDev } = require('./env');
 const plugins = gulpLoadPlugins({
 	rename: {
 		'gulp-sass-lint': 'sassLint',
+		'gulp-dart-sass': 'dartSass'
 	},
 });
 

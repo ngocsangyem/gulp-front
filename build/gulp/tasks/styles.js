@@ -49,7 +49,7 @@ const sassOpts = {
 	importer: [sassAlias()],
 };
 
-const compileSass = () => plugins.sass(sassOpts);
+const compileSass = () => plugins.dartSass(sassOpts);
 
 const sourcemapsWrite = () => (isDev ? plugins.sourcemaps.write() : pipe());
 

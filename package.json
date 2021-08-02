@@ -61,6 +61,7 @@
 		"gulp-changed": "^4.0.3",
 		"gulp-cluster-src": "^0.4.0",
 		"gulp-concat": "^2.6.1",
+		"gulp-dart-sass": "^1.0.2",
 		"gulp-eslint": "^6.0.0",
 		"gulp-filter": "^7.0.0",
 		"gulp-header": "^2.0.9",
