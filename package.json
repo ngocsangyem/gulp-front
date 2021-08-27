@@ -42,7 +42,7 @@
 		"@babel/preset-env": "^7.15.0",
 		"@babel/register": "^7.15.3",
 		"ansi-colors": "^4.1.1",
-		"autoprefixer": "^10.3.1",
+		"autoprefixer": "^10.3.3",
 		"awesome-typescript-loader": "^5.2.1",
 		"babel-eslint": "^10.1.0",
 		"babel-loader": "^8.2.2",
@@ -82,9 +82,9 @@
 		"gulp-sourcemaps": "^3.0.0",
 		"gulp-strip-comments": "^2.5.2",
 		"gulp-strip-css-comments": "^2.0.0",
-		"htmlparser2": "^6.1.0",
+		"htmlparser2": "^7.0.0",
 		"imagemin-pngquant": "^9.0.2",
-		"jasmine-core": "^3.8.0",
+		"jasmine-core": "^3.9.0",
 		"karma": "^6.3.4",
 		"karma-chrome-launcher": "^3.1.0",
 		"karma-jasmine": "^4.0.1",
@@ -102,7 +102,7 @@
 		"puppeteer": "^10.2.0",
 		"through2": "^4.0.2",
 		"tsconfig-paths-webpack-plugin": "^3.5.1",
-		"typescript": "^4.3.5",
+		"typescript": "^4.4.2",
 		"vinyl": "^2.2.1",
 		"vinyl-named": "^1.1.0",
 		"webpack": "^5.51.1",
@@ -110,6 +110,6 @@
 		"webpack-stream": "^6.1.2"
 	},
 	"dependencies": {
-		"swiper": "^6.8.3"
+		"swiper": "^7.0.1"
 	}
 }
