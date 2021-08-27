@@ -24,3 +24,41 @@
 		0 16.2px 21.9px -6px rgba(0, 0, 0, 0.117),
 		0 46px 60px -6px rgba(0, 0, 0, 0.2);
 }
+
+.hover\:reduce-opacity {
+	opacity: 1;
+	transition: all 0.3s ease;
+
+	&:hover {
+		opacity: 0.8;
+	}
+}
+
+.hover\:scale {
+	transition: transform 0.3s var(--ease-out-back);
+
+	&:hover {
+		transform: scale(1.1);
+	}
+}
+
+.hover\:elevate {
+	box-shadow: var(--shadow-sm);
+	transition: all 0.3s ease;
+
+	&:hover {
+		box-shadow: var(--shadow-md);
+	}
+}
+
+// text styles
+.link-subtle {
+	color: inherit;
+	cursor: pointer;
+	text-decoration: none;
+	transition: all 0.2s ease;
+
+	&:hover {
+		color: var(--color-primary);
+	}
+}
