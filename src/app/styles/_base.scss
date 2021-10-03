@@ -1,5 +1,8 @@
+@import './base/breakpoints';
+@import './base/mixins';
+@import './base/grid';
+
 @import './base/reset';
-@import './abstracts/mixins';
 @import './base/animation';
 @import './base/colors';
 @import './base/typography';

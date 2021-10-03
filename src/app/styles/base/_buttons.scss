@@ -1,5 +1,5 @@
-// basic buttons style - we suggest you don't modify this file
-// use the 📁custom-style/_buttons.scss file to create your custom buttons
+// don't modify this file -> edit 📁 custom/_buttons.scss to create your custom buttons
+
 .btn {
 	// basic button style
 	position: relative;
@@ -8,7 +8,6 @@
 	align-items: center;
 	white-space: nowrap;
 	text-decoration: none;
-	line-height: 1;
 	font-size: var(--btn-font-size, 1em);
 	padding-top: var(--btn-padding-y, 0.5em);
 	padding-bottom: var(--btn-padding-y, 0.5em);
