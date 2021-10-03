@@ -1,3 +1,4 @@
+@use '../base' as *;
 :root {
 	--btn-font-size: 1rem;
 	--btn-padding-x: var(--space-sm);

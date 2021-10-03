@@ -1,3 +1,4 @@
+@use '../base' as *;
 :root {
 	--form-control-font-size: 1rem;
 	--form-control-padding-x: var(--space-xs);

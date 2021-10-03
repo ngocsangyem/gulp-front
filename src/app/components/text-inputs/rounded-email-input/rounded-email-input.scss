@@ -1,4 +1,4 @@
-@import "@/styles/styles.scss";
+@use '@/styles/base' as *;
 
 .rounded-email-container {
 	display: flex;

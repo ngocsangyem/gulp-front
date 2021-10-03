@@ -7,7 +7,7 @@ const sortMedia = require('postcss-sort-media-queries');
 const cssnano = require('cssnano');
 const aliasImporter = require('node-sass-alias-importer');
 const dependents = require('../../plugins/dependents');
-
+const sass = require('gulp-sass')(require('sass'));
 const {
 	paths,
 	plugins,
@@ -49,7 +49,7 @@ const sassOpts = {
 	importer: [sassAlias()],
 };
 
-const compileSass = () => plugins.dartSass(sassOpts);
+const compileSass = () => sass(sassOpts);
 
 const sourcemapsWrite = () => (isDev ? plugins.sourcemaps.write() : pipe());
 
