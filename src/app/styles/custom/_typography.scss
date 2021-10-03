@@ -3,7 +3,7 @@
 	--font-primary: Inter, system-ui, sans-serif;
 
 	// font size
-	--text-base-size: 1em; // body font-size
+	--text-base-size: 1rem; // body font-size
 	--text-scale-ratio: 1.2; // multiplier used to generate the type scale values 👇
 
 	// line-height
@@ -13,8 +13,8 @@
 	// capital letters - used in combo with the lhCrop mixin
 	--font-primary-capital-letter: 1;
 
-	// unit - don't modify unless you want to change the typography unit (e.g., from Em to Rem units)
-	--text-unit: 1em; // if not Em units → --text-unit: var(--text-base-size);
+	// unit - don't modify unless you want to change the typography unit (e.g., from Rem to Em units)
+	--text-unit: var(--text-base-size); // if Em units → --text-unit: var(--text-base-size);
 }
 
 :root,
@@ -30,12 +30,11 @@
 	--text-xxxxl: calc(var(--text-xxxl) * var(--text-scale-ratio));
 }
 
-@supports(--css: variables) {
-	@include breakpoint(md) {
-		:root {
-			--text-base-size: 1.25em;
-			--text-scale-ratio: 1.25;
-		}
+
+@include breakpoint(md) {
+	:root {
+		--text-base-size: 1.25rem;
+		--text-scale-ratio: 1.25;
 	}
 }
 
@@ -48,7 +47,7 @@ h2,
 h3,
 h4 {
 	font-family: var(--font-primary);
-	font-weight: 700;
+	--heading-font-weight: 700;
 }
 
 // font family

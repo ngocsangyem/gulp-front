@@ -2,23 +2,23 @@
 	--form-control-font-size: 1rem;
 	--form-control-padding-x: var(--space-xs);
 	--form-control-padding-y: var(--space-xxs);
-	--form-control-radius: 0.25em;
+	--form-control-radius: var(--radius-md);
 }
 
 .form-control {
-	background: var(--color-bg);
-	border: 2px solid var(--color-contrast-low);
+	background: var(--color-bg-dark);
 	line-height: 1.2;
+	box-shadow: inset 0px 0px 0px 1px var(--color-contrast-lower);
 	transition: all 0.2s ease;
 
 	&::placeholder {
 		opacity: 1;
-		color: var(--color-contrast-medium);
+		color: var(--color-contrast-low);
 	}
 
 	&:focus {
-		border-color: var(--color-primary);
-		box-shadow: 0px 0px 0px 2px alpha(var(--color-primary), 0.2);
+		background: var(--color-bg);
+		box-shadow: inset 0px 0px 0px 1px alpha(var(--color-contrast-lower), 0), 0px 0px 0px 2px var(--color-primary), var(--shadow-sm);
 		outline: none;
 	}
 }
@@ -26,23 +26,19 @@
 .form-control--disabled,
 .form-control[disabled],
 .form-control[readonly] {
+	opacity: 0.5;
 	cursor: not-allowed;
 }
 
 .form-control[aria-invalid="true"],
-.form-control--error {
-	border-color: var(--color-error);
+.form-control.form-control--error {
+	box-shadow: inset 0px 0px 0px 1px alpha(var(--color-contrast-lower), 0), 0px 0px 0px 2px var(--color-error);
 
 	&:focus {
-		border-color: var(--color-error);
-		box-shadow: 0px 0px 0px 2px alpha(var(--color-error), 0.2);
+		box-shadow: inset 0px 0px 0px 1px alpha(var(--color-contrast-lower), 0), 0px 0px 0px 2px var(--color-error), var(--shadow-sm);
 	}
 }
 
-.form-legend {
-	font-size: var(--text-md);
-}
+.form-legend {}
 
-.form-label {
-	font-size: var(--text-sm);
-}
+.form-label {}
